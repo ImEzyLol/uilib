@@ -29,17 +29,17 @@ local visualizer;
 if getgenv().library then
 	getgenv().library:Unload();
 end;
-if not isfolder('vocats-projects') then makefolder('vocats-projects') end
-if (not isfile('vocats-projects/configs')) then
-    makefolder('vocats-projects/configs');
+if not isfolder('Requisition-Hub') then makefolder('Requisition-Hub') end
+if (not isfile('Requisition-Hub/configs')) then
+    makefolder('Requisition-Hub/configs');
 end;
 
-if (not isfile('vocats-projects/configs/globalConf.bin')) then
+if (not isfile('Requisition-Hub/configs/globalConf.bin')) then
     -- By default global config is turned on
-    writefile('vocats-projects/configs/globalConf.bin', 'true');
+    writefile('Requisition-Hub/configs/globalConf.bin', 'true');
 end;
 
-local globalConfFilePath = 'vocats-projects/configs/globalConf.bin';
+local globalConfFilePath = 'Requisition-Hub/configs/globalConf.bin';
 local isGlobalConfigOn = readfile(globalConfFilePath) == 'true';
 
 local library = {
@@ -47,7 +47,7 @@ local library = {
 	tabs = {},
 	draggable = true,
 	flags = {},
-	title = string.format('vocat\'s script | Vocat_ on discord'),
+	title = string.format('ezy\'s script | ezuy on discord'),
 	open = false,
 	popup = nil,
 	instances = {},
@@ -57,7 +57,7 @@ local library = {
 	configVars = {},
 	tabSize = 0,
 	theme = {},
-	foldername = isGlobalConfigOn and 'vocats-projects/configs/global' or string.format('vocats-projects/configs/%s', tostring(LocalPlayer.UserId)),
+	foldername = isGlobalConfigOn and 'Requisition-Hub/configs/global' or string.format('Requisition-Hub/configs/%s', tostring(LocalPlayer.UserId)),
 	fileext = '.json',
 	chromaColor = Color3.new()
 }
@@ -3488,7 +3488,7 @@ do -- // Load
         local function getAllConfigs()
             local files = {};
 
-            for _, v in next, listfiles('vocats-projects/configs') do
+            for _, v in next, listfiles('Requisition-Hub/configs') do
                 if (not isfolder(v)) then continue; end;
 
                 for _, v2 in next, listfiles(v) do
@@ -3603,7 +3603,7 @@ do -- // Load
                     end;
                 end;
 
-                local configData = readfile(string.format('vocats-projects/configs/%s/%s', folderName, fullConfigName));
+                local configData = readfile(string.format('Requisition-Hub/configs/%s/%s', folderName, fullConfigName));
                 writefile(string.format('%s/%s', library.foldername, fullConfigName), configData);
 
                 library:LoadConfig(configName);
